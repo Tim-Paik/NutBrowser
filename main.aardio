@@ -1,0 +1,140 @@
+import win.ui;
+import win.util.tray;
+/*DSG{{*/
+mainForm = win.form(text="NutBrowser";right=1399;bottom=799;bgcolor=3881787;border="none";mode="popup";sysmenu=false)
+mainForm.add(
+addressBar={cls="edit";text="https://cn.bing.com";left=160;top=6;right=1160;bottom=36;ah=1;autovscroll=false;aw=1;bgcolor=2829099;border=1;clipch=1;color=16777215;font=LOGFONT(h=-18;name='Microsoft YaHei UI');hidesel=1;tabstop=1;z=1};
+back={cls="plus";left=4;top=4;right=38;bottom=38;ah=1;aw=1;bgcolor=3881787;dt=1;foreRepeat="scale";foreground="\res\icons\direction-left.png";notify=1;paddingBottom=5;paddingLeft=5;paddingRight=5;paddingTop=5;z=6};
+close={cls="plus";left=1360;top=0;right=1400;bottom=40;ah=1;aw=1;bgcolor=3881787;dt=1;foreRepeat="scale";foreground="\res\icons\close.png";linearGradient=-1;notify=1;paddingBottom=5;paddingLeft=10;paddingRight=10;paddingTop=2;z=9};
+forward={cls="plus";left=38;top=4;right=76;bottom=38;ah=1;aw=1;bgcolor=3881787;dt=1;foreRepeat="scale";foreground="\res\icons\direction-right.png";notify=1;paddingBottom=5;paddingLeft=5;paddingRight=5;paddingTop=5;z=5};
+home={cls="plus";left=118;top=4;right=152;bottom=38;ah=1;aw=1;bgcolor=3881787;dt=1;foreRepeat="scale";foreground="\res\icons\home.png";notify=1;paddingBottom=5;paddingLeft=5;paddingRight=5;paddingTop=5;z=3};
+minus={cls="plus";left=1280;top=0;right=1320;bottom=40;ah=1;aw=1;bgcolor=3881787;dt=1;foreRepeat="scale";foreground="\res\icons\minus.png";notify=1;paddingBottom=5;paddingLeft=10;paddingRight=10;paddingTop=2;z=7};
+refresh={cls="plus";left=76;top=4;right=114;bottom=38;ah=1;aw=1;bgcolor=3881787;dt=1;foreRepeat="scale";foreground="\res\icons\refresh.png";notify=1;paddingBottom=5;paddingLeft=5;paddingRight=5;paddingTop=5;z=4};
+switch={cls="plus";left=1320;top=0;right=1360;bottom=40;ah=1;aw=1;bgcolor=3881787;dt=1;foreRepeat="scale";foreground="\res\icons\switch.png";notify=1;paddingBottom=5;paddingLeft=10;paddingRight=10;paddingTop=2;z=8};
+webview={cls="custom";text="自定义控件";left=0;top=42;right=1400;bottom=800;bgcolor=0;db=1;dl=1;dr=1;dt=0.05;z=2}
+)
+/*}}*/
+
+import console
+import win.ui.shadow
+win.ui.shadow(mainForm)
+import win.ui.minmax
+win.ui.minmax(mainForm,800,500)
+
+//import web.blink.portable
+import fsys
+namespace web.blink{
+	if(!_STUDIO_INVOKED){
+		_dllPath = ..fsys.appdata("NutBrowser/node.dll",$"~\lib\web\blink\.dll\node.dll");
+		_dllPathX = ..fsys.appdata("NutBrowser/wkex.dll",$"~\lib\web\blink\.dll\wkex.dll");
+	}
+}
+import web.blink
+import web.blink.fileSystem
+import web.blink.view
+var webview = web.blink.view(mainForm.webview);
+
+webview.config("drawMinInterval","60")
+webview.enableDragDrop(true)
+webview.enableDropGo(true)
+webview.enableTouch(true)
+webview.transparent = true
+
+mainForm.wndproc = function(hwnd,message,wParam,lParam){ 
+        select (message) {
+                case 0x201/*_WM_LBUTTONDOWN*/ {
+                	mainForm.hitCaption()
+                }
+                case 0x0203/*_WM_LBUTTONDBLCLK*/ {
+                	mainForm.hitMax()
+                }
+        }
+}
+
+
+
+mainForm.addressBar.onOk = function(){
+	webview.go(mainForm.addressBar.text)
+    return true; 	
+}
+
+webview.go("https://cn.bing.com")
+
+mainForm.back.skin(
+	background = { 
+		hover = "\res\icons\#515151.png";
+		active = "\res\icons\#5b5b5b.png";
+	}
+)
+mainForm.back.oncommand = function(id,event){
+    webview.goBack()
+}
+
+mainForm.refresh.skin(
+	background = { 
+		hover = "\res\icons\#515151.png";
+		active = "\res\icons\#5b5b5b.png";
+	}
+)
+mainForm.refresh.oncommand = function(id,event){
+	webview.reload()
+}
+
+mainForm.forward.skin(
+	background = { 
+		hover = "\res\icons\#515151.png";
+		active = "\res\icons\#5b5b5b.png";
+	}
+)
+mainForm.forward.oncommand = function(id,event){
+    webview.goForward()
+}
+
+mainForm.home.skin(
+	background = { 
+		hover = "\res\icons\#515151.png";
+		active = "\res\icons\#5b5b5b.png";
+	}
+)
+mainForm.home.oncommand = function(id,event){
+	webview.go("https://cn.bing.com")
+}
+
+mainForm.minus.skin(
+	background = {
+		hover = "\res\icons\#323232.png";
+		active = "\res\icons\#494949.png";
+	}
+)
+mainForm.minus.oncommand = function(id,event){
+	mainForm.hitMin()
+}
+
+mainForm.switch.skin(
+	background = {
+		hover = "\res\icons\#323232.png";
+		active = "\res\icons\#494949.png";
+	}
+)
+mainForm.switch.oncommand = function(id,event){
+	mainForm.hitMax()
+}
+
+mainForm.close.skin(
+	background = {
+		hover = "\res\icons\#e81123.png";
+		active = "\res\icons\#95151f.png";
+	}
+)
+mainForm.close.oncommand = function(id,event){
+	mainForm.hitClose()
+}
+/*
+mainForm.toolbar.oncommand = function(id,event){
+	if (event==1) {
+		mainForm.hitMax()
+	}
+}
+*/
+mainForm.show();
+return win.loopMessage();
