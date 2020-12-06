@@ -1,6 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<project ver="10" name="NutBrowser" libEmbed="true" icon="\app.ico" ui="win" output="NutBrowser.exe" CompanyName="" FileDescription="NutBrowser" LegalCopyright="Copyright (C) Tim_Paik 2020" ProductName="NutBrowser" InternalName="" FileVersion="0.0.0.1" ProductVersion="0.0.0.1" publishDir="/dist/" dstrip="true" local="false">
+<project ver="10" name="NutBrowser" libEmbed="true" icon="\res\images\app.ico" ui="win" output="NutBrowser.exe" CompanyName="" FileDescription="" LegalCopyright="Copyright (C) Tim_Paik 2020" ProductName="NutBrowser" InternalName="" FileVersion="1.0.0.4" ProductVersion="1.0.0.4" publishDir="/dist/" dstrip="false" local="false">
 	<file name="main.aardio" path="main.aardio" comment="main.aardio"/>
-	<folder name="资源文件" path="res" embed="true"/>
-	<folder name="窗体文件" path="dlg" comment="目录" embed="true"/>
+	<folder name="资源文件" path="res" embed="true" local="false">
+		<folder name="images" path="res\images" comment="res\images" local="false" embed="false">
+			<file name="#323232.png" path="res\images\#323232.png" comment="res\images\#323232.png"/>
+			<file name="#3b3b3b.png" path="res\images\#3b3b3b.png" comment="res\images\#3b3b3b.png"/>
+			<file name="#494949.png" path="res\images\#494949.png" comment="res\images\#494949.png"/>
+			<file name="#515151.png" path="res\images\#515151.png" comment="res\images\#515151.png"/>
+			<file name="#5b5b5b.png" path="res\images\#5b5b5b.png" comment="res\images\#5b5b5b.png"/>
+			<file name="#95151f.png" path="res\images\#95151f.png" comment="res\images\#95151f.png"/>
+			<file name="#e81123.png" path="res\images\#e81123.png" comment="res\images\#e81123.png"/>
+			<file name="app.ico" path="res\images\app.ico" comment="res\images\app.ico"/>
+			<file name="back.png" path="res\images\back.png" comment="res\images\back.png"/>
+			<file name="close.png" path="res\images\close.png" comment="res\images\close.png"/>
+			<file name="direction-left-alpha.png" path="res\images\direction-left-alpha.png" comment="res\images\direction-left-alpha.png"/>
+			<file name="direction-left.png" path="res\images\direction-left.png" comment="res\images\direction-left.png"/>
+			<file name="direction-right-alpha.png" path="res\images\direction-right-alpha.png" comment="res\images\direction-right-alpha.png"/>
+			<file name="direction-right.png" path="res\images\direction-right.png" comment="res\images\direction-right.png"/>
+			<file name="forward.png" path="res\images\forward.png" comment="res\images\forward.png"/>
+			<file name="home.png" path="res\images\home.png" comment="res\images\home.png"/>
+			<file name="loading.gif" path="res\images\loading.gif" comment="res\images\loading.gif"/>
+			<file name="minus.png" path="res\images\minus.png" comment="res\images\minus.png"/>
+			<file name="refresh.png" path="res\images\refresh.png" comment="res\images\refresh.png"/>
+			<file name="switch.png" path="res\images\switch.png" comment="res\images\switch.png"/>
+		</folder>
+	</folder>
+	<folder name="窗体文件" path="dlg" comment="目录" embed="true" local="false"/>
 </project>
