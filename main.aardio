@@ -1,5 +1,6 @@
-NutBrowserVersion = "1.0.0.4"
-BASEURL = "https://a.maorx.cn/"
+NutBrowserVersion = "1.0.0.5"
+//BASEURL = "https://a.maorx.cn/"
+BASEURL = "https://cn.bing.com/"
 
 import win.ui
 /*DSG{{*/
@@ -11,7 +12,7 @@ close={cls="plus";left=1240;top=0;right=1280;bottom=40;bgcolor=3881787;dr=1;dt=1
 forward={cls="plus";left=78;top=4;right=112;bottom=38;bgcolor=3881787;dl=1;dt=1;foreRepeat="scale";foreground="\res\images\direction-right.png";notify=1;paddingBottom=5;paddingLeft=5;paddingRight=5;paddingTop=5;z=6};
 home={cls="plus";left=148;top=4;right=182;bottom=38;bgcolor=3881787;dl=1;dt=1;foreRepeat="scale";foreground="\res\images\home.png";notify=1;paddingBottom=5;paddingLeft=5;paddingRight=5;paddingTop=5;z=8};
 icon={cls="plus";left=6;top=4;right=40;bottom=38;autohscroll=false;autovscroll=false;foreRepeat="scale";foreground="\res\images\app.ico";z=10};
-loading={cls="plus";left=0;top=42;right=1280;bottom=762;db=1;dl=1;dr=1;dt=1;foreRepeat="center";foreground="\res\images\loading.gif";z=11};
+loading={cls="plus";left=0;top=42;right=1280;bottom=762;clipch=1;db=1;dl=1;dr=1;dt=1;foreRepeat="center";foreground="\res\images\loading.gif";z=11};
 minus={cls="plus";left=1160;top=0;right=1200;bottom=40;bgcolor=3881787;dr=1;dt=1;foreRepeat="scale";foreground="\res\images\minus.png";notify=1;paddingBottom=5;paddingLeft=10;paddingRight=10;paddingTop=2;z=3};
 refresh={cls="plus";left=112;top=4;right=146;bottom=38;bgcolor=3881787;dl=1;dt=1;foreRepeat="scale";foreground="\res\images\refresh.png";notify=1;paddingBottom=5;paddingLeft=5;paddingRight=5;paddingTop=5;z=7};
 switch={cls="plus";left=1200;top=0;right=1240;bottom=40;bgcolor=3881787;dr=1;dt=1;foreRepeat="scale";foreground="\res\images\switch.png";notify=1;paddingBottom=5;paddingLeft=10;paddingRight=10;paddingTop=2;z=2};
@@ -217,7 +218,7 @@ webview.onDocumentComplete = function(url){
     webview.Preview()
 }
 webview.onTitleChange = function(title){
-    if (title=="青柠起始页") {
+    if (title=="青柠起始页" || title=="微软 Bing 搜索 - 国内版" || title=="微软 Bing 搜索 - 国际版") {
     	mainForm.text = "新标签页 - NutBrowser"
     }else {
     	mainForm.text = title + " - " + "NutBrowser"
